@@ -50,7 +50,6 @@
 		54F3940F1BCADF6600369B5B /* MCLineNodeBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCLineNodeBubble.h; sourceTree = "<group>"; };
 		54F394101BCADF6600369B5B /* MCLineNodeBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCLineNodeBubble.m; sourceTree = "<group>"; };
 		54F394121BCAE05700369B5B /* MCAnimateLinesDataSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCAnimateLinesDataSourceDelegate.h; sourceTree = "<group>"; };
-		54F3941D1BCB9E3D00369B5B /* test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +73,6 @@
 		54F3933E1BC9823100369B5B = {
 			isa = PBXGroup;
 			children = (
-				54F3941D1BCB9E3D00369B5B /* test.h */,
 				54F393491BC9823100369B5B /* GraphChart */,
 				54F393631BC9823100369B5B /* GraphChartTests */,
 				54F393481BC9823100369B5B /* Products */,
