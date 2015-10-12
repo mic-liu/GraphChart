@@ -31,7 +31,7 @@
  */
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     lineChart = [[MCAnimateLines alloc]initWithFrame:CGRectMake(5, 164, self.view.frame.size.width-10, 300)];
     [lineChart setCountOfLines:6];
     lineChart.delegate = self;

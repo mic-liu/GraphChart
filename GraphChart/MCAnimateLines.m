@@ -61,7 +61,7 @@
  */
 - (void)drawLines {
     _dataSource = [_delegate getData];
-
+    
     if (_indexOfDrawingLine < _dataSource.count-1) {
         //数据的个数小于折线的条数
         if (_indexOfDrawingLine < _countOfLines) {
@@ -84,37 +84,37 @@
             //数据的个数大于折线的条数
             //我们首先将所有的折线视图左移一个折线位置，将_subLinesArray中第一个折线移除（父视图中），然后绘制下一个折线，并添加到_subLinesArray中
             
-                [UIView animateWithDuration:.5 animations:^{
-                    for (MCSubLine *line in _subLinesArray) {
+            [UIView animateWithDuration:.5 animations:^{
+                for (MCSubLine *line in _subLinesArray) {
                     [line setFrame:CGRectMake(line.frame.origin.x-_subLineWidth, 0, _subLineWidth, _size.height)];
+                }
+            } completion:^(BOOL finished) {
+                if (finished) {
+                    [UIView animateWithDuration:0.5 animations:^{
+                        ((MCSubLine*)[_subLinesArray objectAtIndex:0]).alpha = 0;
+                    } completion:^(BOOL finished) {
+                        if (finished) {
+                            [[_subLinesArray objectAtIndex:0]removeFromSuperview];
+                            [_subLinesArray removeObjectAtIndex:0];
                         }
-                } completion:^(BOOL finished) {
-                    if (finished) {
-                        [UIView animateWithDuration:0.5 animations:^{
-                            ((MCSubLine*)[_subLinesArray objectAtIndex:0]).alpha = 0;
-                        } completion:^(BOOL finished) {
-                            if (finished) {
-                                [[_subLinesArray objectAtIndex:0]removeFromSuperview];
-                                [_subLinesArray removeObjectAtIndex:0];
-                            }
-                        }];
-                        
-                        MCSubLine *subLine = [[MCSubLine alloc]initWithFrame:CGRectMake((_countOfLines-1)*_subLineWidth+5, 0, _subLineWidth, _size.height)];
-                        CGFloat y1 = [[_dataSource objectAtIndex:_indexOfDrawingLine] floatValue];
-                        CGFloat y2 = [[_dataSource objectAtIndex:_indexOfDrawingLine+1]floatValue];
-                        [subLine setY1:y1 andY2:y2];
-                        subLine.alpha = 0;
-                        [self addSubview:subLine];
-                        [self sendSubviewToBack:subLine];
-                        [_subLinesArray addObject:subLine];
-                        _indexOfDrawingLine++;
+                    }];
+                    
+                    MCSubLine *subLine = [[MCSubLine alloc]initWithFrame:CGRectMake((_countOfLines-1)*_subLineWidth+5, 0, _subLineWidth, _size.height)];
+                    CGFloat y1 = [[_dataSource objectAtIndex:_indexOfDrawingLine] floatValue];
+                    CGFloat y2 = [[_dataSource objectAtIndex:_indexOfDrawingLine+1]floatValue];
+                    [subLine setY1:y1 andY2:y2];
+                    subLine.alpha = 0;
+                    [self addSubview:subLine];
+                    [self sendSubviewToBack:subLine];
+                    [_subLinesArray addObject:subLine];
+                    _indexOfDrawingLine++;
                     [UIView animateWithDuration:.5 animations:^{
-                            subLine.alpha = 1;
-                        } completion:^(BOOL finished) {
-                            
-                        }];
-                    }
-                }];
+                        subLine.alpha = 1;
+                    } completion:^(BOOL finished) {
+                        
+                    }];
+                }
+            }];
             
             
         }
@@ -122,7 +122,7 @@
     }
     
 }
-/** 
+/**
  * 画面中折线的条数
  *
  *  @param count 折线条数
